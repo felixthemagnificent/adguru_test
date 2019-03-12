@@ -11,8 +11,15 @@ class User < ApplicationRecord
   validates_presence_of :block_reason, if: :blocked?
   validate :able_to_delete?, on: :delete
 
+  after_save :send_notification, if: :status_changed?
+
   def able_to_delete?
     ((tickets.try(:last).try(:title) =~ /Delete/) != nil)  && (balance == 0)
+  end
+
+  private
+  def send_notification
+    #TODO
   end
 
 end
