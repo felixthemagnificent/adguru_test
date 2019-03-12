@@ -1,6 +1,6 @@
 h1 Listing tickets
 
-table
+table.table
   thead
     tr
       th Title
@@ -15,7 +15,7 @@ table
       tr
         td = ticket.title
         td = ticket.description
-        td = ticket.user
+        td = ticket.user.email
         td = link_to 'Show', ticket
         td = link_to 'Edit', edit_ticket_path(ticket)
         td = link_to 'Destroy', ticket, data: { confirm: 'Are you sure?' }, method: :delete

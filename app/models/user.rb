@@ -9,11 +9,12 @@ class User < ApplicationRecord
   enum status: [:active, :blocked]
 
   validates_presence_of :block_reason, if: :blocked?
+  validate :able_to_delete?, on: :delete
 
   before_save :clear_block_reason, if: :active?
 
   def able_to_delete?
-    (tickets.try(:last).try(:title) =~ /Delete/) && (balance == 0)
+    ((tickets.try(:last).try(:title) =~ /Delete/) != nil)  && (balance == 0)
   end
 
   private

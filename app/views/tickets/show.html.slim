@@ -8,7 +8,7 @@ p
   = @ticket.description
 p
   strong User:
-  = @ticket.user
+  = @ticket.user.email
 
 => link_to 'Edit', edit_ticket_path(@ticket)
 '|
