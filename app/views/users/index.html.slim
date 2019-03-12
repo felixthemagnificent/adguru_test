@@ -3,14 +3,22 @@ h1 Listing users
 table.table
   thead
     tr
+      th Email
+      th Status
+      th Block reason
+      th Balance
       th
-      th
-      th
+      th Actions
 
   tbody
     - @users.each do |user|
       tr
         td = user.email
+        td = user.status
+        td = user.block_reason
+        td = user.balance
+        td
+        td = link_to 'Switch status', switch_status_user_path(user), class: 'btn btn-default', remote: true
         td = link_to 'Show', user, class: 'btn btn-default'
         td = link_to 'Edit', edit_user_path(user), class: 'btn btn-default'
         td = link_to 'Destroy', user, class: "btn btn-default #{"disabled" unless user.able_to_delete?}", data: { confirm: 'Are you sure?' }, method: :delete
@@ -18,3 +26,19 @@ table.table
 br
 
 = link_to 'New User', new_user_path
+
+
+.modal.fade.bs-example-modal-lg id="myModal" tabindex='-1' role='dialog' aria-labelledby="Modal Title" aria-hidden='true'
+  .modal-dialog.modal-lg
+    .modal-content
+      .modal-header
+        h4.modal-title = "Modal Title"
+        button.close type='button' data-dismiss='modal'
+          span aria-hidden='true' &times;
+          span.sr-only Close
+        
+      .modal-body
+        p Body
+      .modal-footer
+        button.btn.btn-danger type='button' data-dismiss='modal' Close
+        button.btn.btn-primary type='submit' Save

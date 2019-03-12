@@ -1,9 +1,13 @@
-= form_for @user do |f|
+= simple_form_for @user, url: switch_status_user_path(@user), method: :post, remote: true do |f|
   - if @user.errors.any?
     #error_explanation
-      h2 = "#{pluralize(@user.errors.count, "error")} prohibited this user from being saved:"
+      h2 = "#{pluralize(@user.errors.count, "ошибка")} не дают сохранить пользователя"
       ul
         - @user.errors.full_messages.each do |message|
           li = message
 
+  .field
+    = f.input :status, collection: [:active, :blocked], allow_blank: false
+  .field
+    = f.input :block_reason
   .actions = f.submit
