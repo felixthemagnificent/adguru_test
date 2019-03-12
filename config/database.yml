@@ -44,8 +44,6 @@ test:
   encoding: unicode
   database: adguru_test
   pool:     5
-  username: postgres
-  password: 
   template: template0
 
 production:

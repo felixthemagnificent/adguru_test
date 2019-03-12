@@ -1,0 +1,15 @@
+p#notice = notice
+
+p
+  strong Title:
+  = @ticket.title
+p
+  strong Description:
+  = @ticket.description
+p
+  strong User:
+  = @ticket.user
+
+=> link_to 'Edit', edit_ticket_path(@ticket)
+'|
+=< link_to 'Back', tickets_path
