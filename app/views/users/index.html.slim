@@ -13,7 +13,7 @@ table.table
         td = user.email
         td = link_to 'Show', user, class: 'btn btn-default'
         td = link_to 'Edit', edit_user_path(user), class: 'btn btn-default'
-        td = link_to 'Destroy', user, class: 'btn btn-default disabled', data: { confirm: 'Are you sure?' }, method: :delete
+        td = link_to 'Destroy', user, class: "btn btn-default #{"disabled" unless user.able_to_delete?}", data: { confirm: 'Are you sure?' }, method: :delete
 
 br
 

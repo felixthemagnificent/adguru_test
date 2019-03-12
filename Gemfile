@@ -43,3 +43,4 @@ group :test do
   gem 'database_cleaner'
   gem 'launchy'
 end
+gem 'simple_form'
